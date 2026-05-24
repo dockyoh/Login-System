@@ -1,0 +1,75 @@
+::before,
+::after,
+* {
+  margin: 0px;
+  padding: 0px;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+:root {
+  --spacing-s: 5px;
+  --spacing-m: 10px;
+  --spacing-l: 15px;
+  --spacing-xl: 20px;
+}
+
+body {
+  background-color: lightgray;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-container,
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  margin-bottom: calc(var(--spacing-xl) * 3);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: calc(var(--spacing-xl) * 3);
+  padding: var(--spacing-l);
+}
+
+h2 {
+  margin-bottom: var(--spacing-m);
+}
+
+button {
+  margin-top: var(--spacing-m);
+  background-color: black;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  padding: var(--spacing-s) var(--spacing-m);
+  border-radius: var(--spacing-s);
+}
+
+input {
+  padding: var(--spacing-s);
+  border-radius: var(--spacing-s);
+  border: none;
+  margin-bottom: var(--spacing-s);
+  font-size: 1.3rem;
+}
