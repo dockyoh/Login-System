@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
-    <title>Document</title>
+    <title>Login-Signup System</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
             <form action="./pure-php/signup-pure.php" method="post">
                 <input type="text" name="username" id="" placeholder="Username">
                 <input type="password" name="password" id="" placeholder="Password">
-                <input type="password" name="passwordRepeat" id="" placeholder="Password">
+                <input type="password" name="passwordRepeat" id="" placeholder="Confirm Password">
                 <input type="email" name="email" id="" placeholder="Email">
                 <button type="submit">Signup</button>
             </form>
