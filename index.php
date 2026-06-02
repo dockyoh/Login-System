@@ -15,7 +15,7 @@
     <main>
         <div class="login-container">
             <h2>Login</h2>
-            <form action="./pure-php/login-pure.php" method="post">
+            <form action="./pure/login.pure.php" method="post">
                 <input type="email" name="email" id="" placeholder="Email">
                 <input type="password" name="password" id="" placeholder="Password">
                 <button type="submit">Login</button>
@@ -23,7 +23,7 @@
         </div>
         <div class="signup-container">
             <h2>Signup</h2>
-            <form action="./pure-php/signup-pure.php" method="post">
+            <form action="./pure/signup.pure.php" method="post">
                 <input type="text" name="username" id="" placeholder="Username">
                 <input type="password" name="password" id="" placeholder="Password">
                 <input type="password" name="passwordRepeat" id="" placeholder="Confirm Password">
