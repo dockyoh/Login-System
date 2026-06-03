@@ -15,18 +15,18 @@ class SignupView
     public function showUser()
     {
 
-        echo 'Welcome ' . $_SESSION['user'] . ' !</br>';
+        echo 'Welcome ' . htmlspecialchars($_SESSION['user']) . ' !</br>';
     }
 
     public function showLoader()
     {
-        echo 'Welcome ' . $this->datas . ' !</br>';
+        echo 'Welcome ' . htmlspecialchars($this->datas) . ' !</br>';
     }
 
     public function showDbData()
     {
         foreach ($this->datas as $data) {
-            echo $data . '</br>';
+            echo htmlspecialchars($data) . '</br>';
         }
     }
 }

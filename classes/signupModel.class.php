@@ -3,7 +3,7 @@
 class SignupModel extends DbConnector
 {
 
-    protected function getDbData()
+    public function getDbData()
     {
         $dbData = $this->dbData();
         return $dbData;

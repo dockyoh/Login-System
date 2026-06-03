@@ -26,7 +26,7 @@
             <form action="./pure/signup.pure.php" method="post">
                 <input type="text" name="username" id="" placeholder="Username">
                 <input type="password" name="password" id="" placeholder="Password">
-                <input type="password" name="passwordRepeat" id="" placeholder="Confirm Password">
+                <input type="password" name="confirmPassword" id="" placeholder="Confirm Password">
                 <input type="email" name="email" id="" placeholder="Email">
                 <button type="submit">Signup</button>
             </form>

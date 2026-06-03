@@ -2,19 +2,20 @@
 
 require_once 'classAutoLoader.pure.php';
 
-//INPUT
-$signupController = new SignupController('Reygin', 'Loader');
+if (isset($_SERVER['REQUEST_METHOD']) === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
+    $email = $_POST['email'];
 
-//PROCESS user inputs
-$userDatas = $signupController->getUserData();
-$loaderData = $signupController->getLoaderData();
-$dataList = $signupController->dbDataArray();
+    //INPUT
 
-//OUTPUT process results
-$userResult = new SignupView($userDatas);
-$loaderResult = new SignupView($loaderData);
-$dbData = new SignupView($dataList);
 
-$userResult->showUser();
-$loaderResult->showLoader();
-$dbData->showDbData();
+    //PROCESS user inputs
+
+    //OUTPUT process results
+
+} else {
+    header('Location: ../index.php?post=not_use');
+    die();
+}

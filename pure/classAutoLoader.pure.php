@@ -12,5 +12,6 @@ function myAutoLoader($myClass)
         require_once $fullPath;
     } else {
         echo 'FILE PATH NOT FOUND!';
+        return false;
     }
 }
