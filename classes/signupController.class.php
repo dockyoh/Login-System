@@ -1,8 +1,9 @@
 <?php
 
 // declare(strict_types=1);
+require_once 'signupView.class.php';
 
-class SignupController
+class SignupController extends SignupModel
 {
     private $user;
     private $autoLoader;
@@ -25,5 +26,10 @@ class SignupController
     public function getLoaderData()
     {
         return $this->autoLoader;
+    }
+
+    public function dbDataArray()
+    {
+        return $this->getDbData();
     }
 }

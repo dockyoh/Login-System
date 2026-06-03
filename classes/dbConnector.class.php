@@ -2,7 +2,7 @@
 
 class DbConnector
 {
-    public function connect()
+    protected function connect()
     {
         try {
             $host = 'localhost';
@@ -23,5 +23,15 @@ class DbConnector
         } catch (PDOException $e) {
             die("CONNECTION FAILED! " . $e->getMessage());
         }
+    }
+
+    protected function dbData()
+    {
+        return [
+            'father' => 'Reygin',
+            'mother' => 'Kristle',
+            'son1' => 'KK',
+            'son2' => 'Azie',
+        ];
     }
 }

@@ -22,4 +22,11 @@ class SignupView
     {
         echo 'Welcome ' . $this->datas . ' !</br>';
     }
+
+    public function showDbData()
+    {
+        foreach ($this->datas as $data) {
+            echo $data . '</br>';
+        }
+    }
 }
