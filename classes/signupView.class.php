@@ -1,32 +1,21 @@
 <?php
 
-// declare(strict_types=1);
+declare(strict_types=1);
 
 
 class SignupView
 {
-    private $datas;
+    private $errors = [];
 
-    public function __construct($datas)
+    public function setErrors(array $error)
     {
-        $this->datas = $datas;
+        $this->errors = $error;
     }
 
-    public function showUser()
+    public function showErrors()
     {
-
-        echo 'Welcome ' . htmlspecialchars($_SESSION['user']) . ' !</br>';
-    }
-
-    public function showLoader()
-    {
-        echo 'Welcome ' . htmlspecialchars($this->datas) . ' !</br>';
-    }
-
-    public function showDbData()
-    {
-        foreach ($this->datas as $data) {
-            echo htmlspecialchars($data) . '</br>';
+        foreach ($this->errors as $error) {
+            echo $error;
         }
     }
 }

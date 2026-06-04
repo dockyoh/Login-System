@@ -19,19 +19,10 @@ class DbConnector
             $dsn = "mysql:host=$host;dbname=$dbName";
 
             $pdo = new PDO($dsn, $dbUser, $dbPassword, $options);
+
             return $pdo;
         } catch (PDOException $e) {
             die("CONNECTION FAILED! " . $e->getMessage());
         }
-    }
-
-    protected function dbData()
-    {
-        return [
-            'father' => 'Reygin',
-            'mother' => 'Kristle',
-            'son1' => 'KK',
-            'son2' => 'Azie',
-        ];
     }
 }

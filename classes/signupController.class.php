@@ -1,37 +1,52 @@
 <?php
 
 // declare(strict_types=1);
+// require_once '../pure/sessionConfig.php';
 
 class SignupController
 {
-    private $signupModel;
-    private $user;
-    private $autoLoader;
+    private $SignupModel;
+    private $signupView;
 
-    public function __construct($user, $loader)
+    private $username;
+    private $password;
+    private $confirmPassword;
+    private $email;
+
+
+    public function __construct($username, $password, $confirmPassword, $email)
     {
-        $this->user = $user;
-        $this->autoLoader = $loader;
-        $this->signupModel = new SignupModel();
+        $this->username = $username;
+        $this->password = $password;
+        $this->confirmPassword = $confirmPassword;
+        $this->email = $email;
+
+        $this->SignupModel = new SignupModel();
+        $this->signupView = new SignupView();
     }
 
-    public function getUserData()
+    public function isEmpty()
     {
-        require_once '../pure/sessionConfig.pure.php';
-
-        $userSession = $_SESSION['user'] = $this->user;
-
-        return $userSession;
+        if (empty($this->username) || empty($this->password) || empty($this->confirmPassword) || empty($this->email)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public function getLoaderData()
+    public function isPwdMatch()
     {
-        return $this->autoLoader;
+        if ($this->password === $this->confirmPassword) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public function dbDataArray()
+    public function addNewUser()
     {
-
-        return $this->signupModel->getDbData();
+        if (!$this->isEmpty() && $this->isPwdMatch()) {
+            $this->SignupModel->insertData($this->username, $this->confirmPassword, $this->email);
+        }
     }
 }

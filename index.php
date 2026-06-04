@@ -1,3 +1,7 @@
+<?php
+require_once './pure/classAutoLoader.pure.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +34,10 @@
                 <input type="email" name="email" id="" placeholder="Email">
                 <button type="submit">Signup</button>
             </form>
+            <?php
+            // $errors = new SignupView();
+            // $errors->showErrors();
+            ?>
         </div>
     </main>
     <footer></footer>
