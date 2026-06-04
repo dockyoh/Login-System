@@ -1,21 +1,20 @@
 <?php
 
 declare(strict_types=1);
+session_start();
 
 
 class SignupView
 {
-    private $errors = [];
-
-    public function setErrors(array $error)
-    {
-        $this->errors = $error;
-    }
 
     public function showErrors()
     {
-        foreach ($this->errors as $error) {
-            echo $error;
+        if (isset($_SESSION['signupErrors'])) {
+            $errors = $_SESSION['signupErrors'];
+            foreach ($errors as $error) {
+                echo $error;
+            }
         }
+        unset($_SESSION['signupErrors']);
     }
 }

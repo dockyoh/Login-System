@@ -35,8 +35,8 @@ require_once './pure/classAutoLoader.pure.php';
                 <button type="submit">Signup</button>
             </form>
             <?php
-            // $errors = new SignupView();
-            // $errors->showErrors();
+            $errors = new SignupView();
+            $errors->showErrors();
             ?>
         </div>
     </main>

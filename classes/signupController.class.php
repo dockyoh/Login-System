@@ -1,12 +1,14 @@
 <?php
 
 // declare(strict_types=1);
-// require_once '../pure/sessionConfig.php';
+session_start();
 
 class SignupController
 {
     private $SignupModel;
     private $signupView;
+
+    private $errors = [];
 
     private $username;
     private $password;
@@ -28,6 +30,8 @@ class SignupController
     public function isEmpty()
     {
         if (empty($this->username) || empty($this->password) || empty($this->confirmPassword) || empty($this->email)) {
+            $this->errors['empty'] = 'FILL ALL THE INPUT FIELDS!';
+            $this->handleErrors();
             return true;
         } else {
             return false;
@@ -39,7 +43,16 @@ class SignupController
         if ($this->password === $this->confirmPassword) {
             return true;
         } else {
+            $this->errors['passwordMatch'] = 'PASSWORD NOT MATCH!';
+            $this->handleErrors();
             return false;
+        }
+    }
+
+    private function handleErrors()
+    {
+        if (!empty($this->errors)) {
+            $_SESSION['signupErrors'] = $this->errors;
         }
     }
 
