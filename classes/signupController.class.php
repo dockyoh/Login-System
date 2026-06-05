@@ -49,11 +49,35 @@ class SignupController
         }
     }
 
+    private function isUserTaken()
+    {
+        if ($this->SignupModel->checkUserData($this->username)) {
+            $this->errors['userTaken'] = 'USERNAME IS ALREADY TAKEN!';
+            $this->handleErrors();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function isEmailTaken()
+    {
+        if ($this->SignupModel->checkEmailData($this->email)) {
+            $this->errors['emailTaken'] = 'EMAIL IS ALREADY TAKEN!';
+            $this->handleErrors();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function isErrors()
     {
         $emptyError = $this->isEmpty();
         $pwdError = $this->isPwdMatch();
-        if ($emptyError || !$pwdError) {
+        $userTaken = $this->isUserTaken();
+        $emailTaken = $this->isEmailTaken();
+        if ($emptyError || !$pwdError || $userTaken || $emailTaken) {
             return true;
         } else {
             $this->handleErrors();
@@ -66,7 +90,6 @@ class SignupController
         if (!empty($this->errors)) {
             $_SESSION['signupErrors'] = $this->errors;
         } else {
-
             $_SESSION['signupErrors'] = ['noError' => 'LOGIN SUCCESSFULLY!'];
         }
     }

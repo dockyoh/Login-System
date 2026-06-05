@@ -25,4 +25,50 @@ class SignupModel extends DbConnector
             die('FAILED TO INSERT DATA ' . $e->getMessage());
         }
     }
+
+    public function checkUserData($username)
+    {
+        try {
+            $query = "SELECT COUNT(*) FROM users WHERE username = :username";
+
+            $statement = $this->connect()->prepare($query);
+
+            $statement->bindParam(':username', $username);
+
+            $statement->execute();
+
+            $count = $statement->fetchColumn();
+
+            if ($count > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            die('FAILED TO CHECK USER DATA! ' . $e->getMessage());
+        }
+    }
+
+    public function checkEmailData($email)
+    {
+        try {
+            $query = "SELECT COUNT(*) FROM users WHERE email = :email";
+
+            $statement = $this->connect()->prepare($query);
+
+            $statement->bindParam(':email', $email);
+
+            $statement->execute();
+
+            $count = $statement->fetchColumn();
+
+            if ($count > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            die('FAILED TO CHECK EMAIL DATA! ' . $e->getMessage());
+        }
+    }
 }
