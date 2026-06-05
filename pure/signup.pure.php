@@ -13,16 +13,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $signupView = new SignupView();
 
     //PROCESS user inputs
-    if ($signupController->isEmpty()) {
-        headerDie();
-    } else if (!$signupController->isPwdMatch()) {
+    if ($signupController->isErrors()) {
         headerDie();
     } else {
         $signupController->addNewUser();
+        headerDie();
     }
 
     //OUTPUT process results
-    $signupView->showErrors();
+    // $signupView->showErrors();
+
 } else {
     headerDie();
 }

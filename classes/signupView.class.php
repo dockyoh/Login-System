@@ -12,8 +12,10 @@ class SignupView
         if (isset($_SESSION['signupErrors'])) {
             $errors = $_SESSION['signupErrors'];
             foreach ($errors as $error) {
-                echo $error;
+                echo $error . '</br>';
             }
+        } else {
+            echo '';
         }
         unset($_SESSION['signupErrors']);
     }

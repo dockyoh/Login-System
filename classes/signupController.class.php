@@ -27,7 +27,7 @@ class SignupController
         $this->signupView = new SignupView();
     }
 
-    public function isEmpty()
+    private function isEmpty()
     {
         if (empty($this->username) || empty($this->password) || empty($this->confirmPassword) || empty($this->email)) {
             $this->errors['empty'] = 'FILL ALL THE INPUT FIELDS!';
@@ -38,7 +38,7 @@ class SignupController
         }
     }
 
-    public function isPwdMatch()
+    private function isPwdMatch()
     {
         if ($this->password === $this->confirmPassword) {
             return true;
@@ -49,10 +49,25 @@ class SignupController
         }
     }
 
+    public function isErrors()
+    {
+        $emptyError = $this->isEmpty();
+        $pwdError = $this->isPwdMatch();
+        if ($emptyError || !$pwdError) {
+            return true;
+        } else {
+            $this->handleErrors();
+            return false;
+        }
+    }
+
     private function handleErrors()
     {
         if (!empty($this->errors)) {
             $_SESSION['signupErrors'] = $this->errors;
+        } else {
+
+            $_SESSION['signupErrors'] = ['noError' => 'LOGIN SUCCESSFULLY!'];
         }
     }
 

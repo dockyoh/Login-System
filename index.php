@@ -1,5 +1,6 @@
 <?php
 require_once './pure/classAutoLoader.pure.php';
+// session_start();
 ?>
 
 <!DOCTYPE html>
