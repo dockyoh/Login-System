@@ -1,6 +1,6 @@
 <?php
 require_once './pure/classAutoLoader.pure.php';
-// session_start();
+$signupView = new SignupView();
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +16,16 @@ require_once './pure/classAutoLoader.pure.php';
 <body>
     <header>
         <h1>Login-Signup System</h1>
+        <!-- SHOW LOGED USER -->
+        <div class="logout-profile-container">
+            <p><?php $signupView->showUser(); ?></p>
+            <form action="./pure/logout.pure.php" method="post">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
     </header>
     <main>
+        <!-- LOGIN -->
         <div class="login-container">
             <h2>Login</h2>
             <form action="./pure/login.pure.php" method="post">
@@ -26,6 +34,7 @@ require_once './pure/classAutoLoader.pure.php';
                 <button type="submit">Login</button>
             </form>
         </div>
+        <!-- LOGOUT -->
         <div class="signup-container">
             <h2>Signup</h2>
             <form action="./pure/signup.pure.php" method="post">
@@ -36,8 +45,8 @@ require_once './pure/classAutoLoader.pure.php';
                 <button type="submit">Signup</button>
             </form>
             <?php
-            $errors = new SignupView();
-            $errors->showErrors();
+            // SHOW ERRORS
+            $signupView->showErrors();
             ?>
         </div>
     </main>

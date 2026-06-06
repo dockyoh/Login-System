@@ -46,11 +46,11 @@ form {
   margin-bottom: calc(var(--spacing-xl) * 3);
 }
 
-h1 {
+/* h1 {
   text-align: center;
   margin-bottom: calc(var(--spacing-xl) * 3);
   padding: var(--spacing-l);
-}
+} */
 
 h2 {
   margin-bottom: var(--spacing-m);
@@ -72,4 +72,22 @@ input {
   border: none;
   margin-bottom: var(--spacing-s);
   font-size: 1.3rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-xl);
+}
+
+header .logout-profile-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: var(--spacing-m);
+}
+
+header button {
+  margin: 0px;
 }

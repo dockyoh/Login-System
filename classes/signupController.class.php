@@ -80,6 +80,7 @@ class SignupController
         if ($emptyError || !$pwdError || $userTaken || $emailTaken) {
             return true;
         } else {
+            //NO ERRORS
             $this->handleErrors();
             return false;
         }
@@ -91,12 +92,13 @@ class SignupController
             $_SESSION['signupErrors'] = $this->errors;
         } else {
             $_SESSION['signupErrors'] = ['noError' => 'LOGIN SUCCESSFULLY!'];
+            $_SESSION['logUser'] = $this->username;
         }
     }
 
     public function addNewUser()
     {
-        if (!$this->isEmpty() && $this->isPwdMatch()) {
+        if (!$this->isEmpty() && $this->isPwdMatch() && !$this->isEmailTaken() && !$this->isUserTaken()) {
             $this->SignupModel->insertData($this->username, $this->confirmPassword, $this->email);
         }
     }

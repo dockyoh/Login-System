@@ -17,4 +17,11 @@ class SignupView
         }
         unset($_SESSION['signupErrors']);
     }
+
+    public function showUser()
+    {
+        if (isset($_SESSION['logUser'])) {
+            echo htmlspecialchars($_SESSION['logUser']);
+        }
+    }
 }

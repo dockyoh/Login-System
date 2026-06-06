@@ -19,10 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $signupController->addNewUser();
         headerDie();
     }
-
-    //OUTPUT process results
-    // $signupView->showErrors();
-
 } else {
     headerDie();
 }
