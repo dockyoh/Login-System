@@ -1,6 +1,7 @@
 <?php
 require_once './pure/classAutoLoader.pure.php';
 $signupView = new SignupView();
+$loginView = new LoginView();
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +48,7 @@ $signupView = new SignupView();
             <?php
             // SHOW ERRORS
             $signupView->showErrors();
+            $loginView->showLogErrors();
             ?>
         </div>
     </main>

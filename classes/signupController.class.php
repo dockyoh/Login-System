@@ -1,7 +1,7 @@
 <?php
 
 // declare(strict_types=1);
-session_start();
+require_once '../pure/sessionConfig.pure.php';
 
 class SignupController
 {
@@ -91,7 +91,7 @@ class SignupController
         if (!empty($this->errors)) {
             $_SESSION['signupErrors'] = $this->errors;
         } else {
-            $_SESSION['signupErrors'] = ['noError' => 'LOGIN SUCCESSFULLY!'];
+            $_SESSION['signupErrors'] = ['noError' => 'SIGNUP SUCCESSFULLY!'];
             $_SESSION['logUser'] = $this->username;
         }
     }
