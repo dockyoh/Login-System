@@ -54,4 +54,23 @@ class LoginModel extends DbConnector
             die('FAILED TO FETCH USER PASSWORD! ' . $e->getMessage());
         }
     }
+
+    public function getUsername($email)
+    {
+        try {
+            $query = "SELECT username FROM users WHERE email = :email";
+
+            $statement = $this->connect()->prepare($query);
+
+            $statement->bindParam(':email', $email);
+
+            $statement->execute();
+
+            $result = $statement->fetch();
+
+            return $result['username'];
+        } catch (PDOException $e) {
+            die('FAILED TO GET USER DATA ' . $e->getMessage());
+        }
+    }
 }

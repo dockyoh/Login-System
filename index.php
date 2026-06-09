@@ -20,7 +20,8 @@ $loginView = new LoginView();
         <!-- SHOW LOGED USER -->
         <div class="logout-profile-container">
             <p><?php $signupView->showSignupUser();
-                $loginView->showLogUser() ?></p>
+                $loginView->showLogUser()
+                ?></p>
             <form action="./pure/logout.pure.php" method="post">
                 <button type="submit">Logout</button>
             </form>
