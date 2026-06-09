@@ -68,7 +68,6 @@ class LoginController
             $_SESSION['loginErrors'] = $this->errors;
         } else {
             $_SESSION['loginErrors'] = ['noErrors' => 'LOGIN SUCCESSFULLY!'];
-            // $_SESSION['logedUser'] = $this->email;
             $_SESSION['logedUser'] = $this->loginModel->getUsername($this->email);
             $_SESSION['isLogedin'] = true;
         }

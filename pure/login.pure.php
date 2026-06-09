@@ -8,21 +8,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $loginController = new LoginController($email, $password);
 
     if ($loginController->isLogedIn()) {
-        headerDie();
+        headerDie('Location: ../public/addProduct.public.html');
     } else {
         if ($loginController->isErrors()) {
-            headerDie();
+            headerDie('Location: ../index.php');
         } else {
             $loginController->logValidUser();
-            headerDie();
+            headerDie('Location: ../index.php');
         }
     }
 } else {
-    headerDie();
+    headerDie('Location: ../index.php');
 }
 
-function headerDie()
+function headerDie($location)
 {
-    header('Location: ../index.php');
+    header($location);
     die();
 }
