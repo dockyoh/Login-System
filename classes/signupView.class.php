@@ -7,7 +7,7 @@ session_start();
 class SignupView
 {
 
-    public function showErrors()
+    public function showSignupErrors()
     {
         if (isset($_SESSION['signupErrors'])) {
             $errors = $_SESSION['signupErrors'];
@@ -18,10 +18,10 @@ class SignupView
         unset($_SESSION['signupErrors']);
     }
 
-    public function showUser()
+    public function showSignupUser()
     {
-        if (isset($_SESSION['logUser'])) {
-            echo htmlspecialchars($_SESSION['logUser']);
+        if (isset($_SESSION['signupLogUser'])) {
+            echo htmlspecialchars($_SESSION['signupLogUser']);
         }
     }
 }

@@ -19,7 +19,8 @@ $loginView = new LoginView();
         <h1>Login-Signup System</h1>
         <!-- SHOW LOGED USER -->
         <div class="logout-profile-container">
-            <p><?php $signupView->showUser(); ?></p>
+            <p><?php $signupView->showSignupUser();
+                $loginView->showLogUser() ?></p>
             <form action="./pure/logout.pure.php" method="post">
                 <button type="submit">Logout</button>
             </form>
@@ -47,7 +48,7 @@ $loginView = new LoginView();
             </form>
             <?php
             // SHOW ERRORS
-            $signupView->showErrors();
+            $signupView->showSignupErrors();
             $loginView->showLogErrors();
             ?>
         </div>

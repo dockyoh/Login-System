@@ -13,11 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $signupView = new SignupView();
 
     //PROCESS user inputs
-    if ($signupController->isErrors()) {
+    if ($signupController->isLogedin()) {
         headerDie();
     } else {
-        $signupController->addNewUser();
-        headerDie();
+        if ($signupController->isErrors()) {
+            headerDie();
+        } else {
+            $signupController->addNewUser();
+            headerDie();
+        }
     }
 } else {
     headerDie();

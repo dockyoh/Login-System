@@ -92,7 +92,8 @@ class SignupController
             $_SESSION['signupErrors'] = $this->errors;
         } else {
             $_SESSION['signupErrors'] = ['noError' => 'SIGNUP SUCCESSFULLY!'];
-            $_SESSION['logUser'] = $this->username;
+            $_SESSION['signupLogUser'] = $this->username;
+            $_SESSION['isLogedin'] = true;
         }
     }
 
@@ -100,6 +101,16 @@ class SignupController
     {
         if (!$this->isEmpty() && $this->isPwdMatch() && !$this->isEmailTaken() && !$this->isUserTaken()) {
             $this->SignupModel->insertData($this->username, $this->confirmPassword, $this->email);
+        }
+    }
+
+    public function isLogedin()
+    {
+        if (isset($_SESSION['isLogedin'])) {
+            $_SESSION['signupErrors'] = ['alreadyLogedin' => 'YOU ALREADY LOGEDIN!'];
+            return true;
+        } else {
+            return false;
         }
     }
 }

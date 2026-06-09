@@ -59,7 +59,7 @@ class LoginController
         if ($empty) {
             return true;
         } else {
-            $this->handleErrors();
+            // $this->handleErrors();
             return false;
         }
     }
@@ -70,7 +70,8 @@ class LoginController
             $_SESSION['loginErrors'] = $this->errors;
         } else {
             $_SESSION['loginErrors'] = ['noErrors' => 'LOGIN SUCCESSFULLY!'];
-            $_SESSION['logUser'] = $this->email;
+            $_SESSION['logedUser'] = $this->email;
+            $_SESSION['isLogedin'] = true;
         }
     }
 
@@ -79,9 +80,20 @@ class LoginController
         $validEmail = $this->isValidEmail();
         $validPassword = $this->isValidPassword();
         if ($validEmail && $validPassword) {
+            $this->handleErrors();
             return true;
         } else {
             $this->handleErrors();
+            return false;
+        }
+    }
+
+    public function isLogedIn()
+    {
+        if (isset($_SESSION['isLogedin'])) {
+            $_SESSION['loginErrors'] = ['alreadyLogin' => 'YOU ALREADY LOGIN!'];
+            return true;
+        } else {
             return false;
         }
     }

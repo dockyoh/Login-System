@@ -7,11 +7,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $loginController = new LoginController($email, $password);
 
-    if ($loginController->isErrors()) {
+    if ($loginController->isLogedIn()) {
         headerDie();
     } else {
-        $loginController->logValidUser();
-        headerDie();
+        if ($loginController->isErrors()) {
+            headerDie();
+        } else {
+            $loginController->logValidUser();
+            headerDie();
+        }
     }
 } else {
     headerDie();

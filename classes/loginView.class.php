@@ -14,13 +14,14 @@ class LoginView
                 echo htmlspecialchars($error) . '</br>';
             }
         }
+
         unset($_SESSION['loginErrors']);
     }
 
     public function showLogUser()
     {
-        if (isset($_SESSION['logUser'])) {
-            echo htmlspecialchars($_SESSION['logUser']);
+        if (isset($_SESSION['logedUser'])) {
+            echo htmlspecialchars($_SESSION['logedUser']);
         }
     }
 }
