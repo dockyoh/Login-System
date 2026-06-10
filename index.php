@@ -1,11 +1,12 @@
 <?php
-require_once './pure/classAutoLoader.pure.php';
-
 session_start();
 
 if (isset($_SESSION['isLogedin'])) {
-    header('Location: public/addProduct.public.html');
+    header('Location: public/addProduct.public.php');
+    die();
 }
+
+require_once './pure/classAutoLoader.pure.php';
 
 $signupView = new SignupView();
 $loginView = new LoginView();

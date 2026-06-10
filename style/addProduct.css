@@ -27,6 +27,12 @@ header {
   align-items: center;
 }
 
+header .logout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 header button {
   padding: var(--spacing-s);
   border-radius: var(--spacing-s);

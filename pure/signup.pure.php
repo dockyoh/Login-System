@@ -14,8 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //PROCESS user inputs
     if ($signupController->isLogedin()) {
-        header('Location: ../public/addProduct.public.html');
-        // headerDie();
+        header('Location: ../public/addProduct.public.php');
     } else {
         if ($signupController->isErrors()) {
             headerDie();

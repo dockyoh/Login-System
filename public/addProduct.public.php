@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['isLogedin'])) {
+  header('Location: ../index.php');
+  die();
+}
+
 require_once '../pure/classAutoLoader.pure.php';
 ?>
 
@@ -16,6 +23,12 @@ require_once '../pure/classAutoLoader.pure.php';
   <header>
     <h1>Add Product</h1>
     <div class="logout-container">
+      <p>
+        <?php
+        $loginView = new LoginView();
+        $loginView->showLogUser();
+        ?>
+      </p>
       <form action="../pure/logout.pure.php" method="post">
         <button type="submit">Logout</button>
       </form>

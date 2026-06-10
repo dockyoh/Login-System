@@ -58,7 +58,7 @@ class AddController
         if (($this->price >= 0) && ($this->quantity >= 0)) {
             return true;
         } else {
-            $this->errors['positiveNum'] = 'IT SHOULD BE A POSITIVE NUMBER';
+            $this->errors['positiveNum'] = 'IT SHOULD BE A POSITIVE NUMBER!';
             $this->errorHandler();
             return false;
         }
@@ -69,7 +69,7 @@ class AddController
         if (!empty($this->errors)) {
             $_SESSION['addErrors'] = $this->errors;
         } else {
-            $_SESSION['addErrors'] = ['ADDED' => 'PRODUCT ADDED SUCCESSFULLY'];
+            $_SESSION['addErrors'] = ['ADDED' => 'PRODUCT ADDED SUCCESSFULLY!'];
         }
     }
 
