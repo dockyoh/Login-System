@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         headerDie();
     } else {
         $addController->addProduct();
+        headerDie();
     }
 } else {
     headerDie();
@@ -20,6 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 function headerDie()
 {
-    header('Location: ../public/addProduct.public.html');
+    header('Location: ../public/addProduct.public.php');
     die();
 }

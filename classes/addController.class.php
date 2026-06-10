@@ -22,7 +22,7 @@ class AddController
 
     private function isEmpty()
     {
-        if ($this->productName || $this->price || $this->quantity) {
+        if (empty($this->productName) || empty($this->price) || empty($this->quantity)) {
             $this->errors['empty'] = 'PLEASE FILL ALL THE INPUTS!';
             $this->errorHandler();
             return true;
@@ -80,7 +80,7 @@ class AddController
         $quantityNum = $this->isQuantityNumeric();
         $positiveNum = $this->isPositiveNumber();
 
-        if ($empty && !$priceNum && !$quantityNum && !$positiveNum) {
+        if ($empty || !$priceNum || !$quantityNum || !$positiveNum) {
             return true;
         } else {
             $this->errorHandler();
