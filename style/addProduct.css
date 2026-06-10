@@ -22,6 +22,22 @@ body {
 
 header {
   padding: var(--spacing-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header button {
+  padding: var(--spacing-s);
+  border-radius: var(--spacing-s);
+  border: none;
+  background-color: black;
+  cursor: pointer;
+  color: white;
+}
+
+main {
+  padding-top: var(--spacing-xl);
 }
 
 h1 {
@@ -60,7 +76,7 @@ form input {
   outline: none;
 }
 
-form button {
+form .add-button {
   width: 100%;
   background-color: green;
   padding: var(--spacing-s);

@@ -1,5 +1,12 @@
 <?php
 require_once './pure/classAutoLoader.pure.php';
+
+session_start();
+
+if (isset($_SESSION['isLogedin'])) {
+    header('Location: public/addProduct.public.html');
+}
+
 $signupView = new SignupView();
 $loginView = new LoginView();
 ?>
