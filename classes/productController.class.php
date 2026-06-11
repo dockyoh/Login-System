@@ -1,13 +1,13 @@
 <?php
 require_once '../pure/sessionConfig.pure.php';
 
-class AddController
+class ProductController
 {
     private $productName;
     private $price;
     private $quantity;
 
-    private $addModel;
+    private $productModel;
 
     private $errors = [];
 
@@ -17,7 +17,7 @@ class AddController
         $this->price = $price;
         $this->quantity = $quantity;
 
-        $this->addModel = new AddModel();
+        $this->productModel = new ProductModel();
     }
 
     private function isEmpty()
@@ -91,7 +91,7 @@ class AddController
     public function addProduct()
     {
         if (!$this->isErrors()) {
-            $this->addModel->insertProduct($this->productName, $this->price, $this->quantity);
+            $this->productModel->insertProduct($this->productName, $this->price, $this->quantity);
         }
     }
 }

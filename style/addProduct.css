@@ -27,6 +27,29 @@ header {
   align-items: center;
 }
 
+header nav {
+  /* width: 50%; */
+}
+
+header ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+header ul li {
+  background-color: rgb(65, 65, 65);
+  padding: var(--spacing-s);
+  margin: 0 var(--spacing-xl);
+  border-radius: var(--spacing-s);
+}
+
+header ul a {
+  color: white;
+  text-decoration: none;
+}
+
 header .logout-container {
   display: flex;
   justify-content: center;

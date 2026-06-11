@@ -7,12 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $price = $_POST['productPrice'];
     $quantity = $_POST['stockQuantity'];
 
-    $addController = new AddController($productName, $price, $quantity);
+    $productController = new ProductController($productName, $price, $quantity);
 
-    if ($addController->isErrors()) {
+    if ($productController->isErrors()) {
         headerDie();
     } else {
-        $addController->addProduct();
+        $productController->addProduct();
         headerDie();
     }
 } else {

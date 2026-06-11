@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $loginController->logValidUser();
             if (isset($_SESSION['isLogedin'])) {
-                headerDie('Location: ../public/addProduct.public.php');
+                headerDie('Location: ../public/dashboard.public.php');
             } else {
                 headerDie('Location: ../index.php');
             }

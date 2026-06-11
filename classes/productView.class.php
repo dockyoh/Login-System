@@ -2,7 +2,7 @@
 
 // session_start();
 
-class AddView
+class ProductView
 {
 
     public function showAddErros()
@@ -15,5 +15,15 @@ class AddView
             }
         }
         unset($_SESSION['addErrors']);
+    }
+
+    public function viewProducts()
+    {
+        $productModel = new ProductModel();
+
+        $products = $productModel->getProduct();
+
+        return $products;
+        // include '../public/dashboard.public.php';
     }
 }

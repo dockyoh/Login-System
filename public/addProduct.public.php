@@ -22,6 +22,13 @@ require_once '../pure/classAutoLoader.pure.php';
 <body>
   <header>
     <h1>Add Product</h1>
+    <nav class="nav-container">
+      <ul>
+        <li><a href="./dashboard.public.php">Dashboard</a></li>
+        <!-- <li><a href="">Update Product</a></li>
+        <li><a href="">Delete Product</a></li> -->
+      </ul>
+    </nav>
     <div class="logout-container">
       <p>
         <?php
@@ -68,7 +75,7 @@ require_once '../pure/classAutoLoader.pure.php';
     </form>
     <div class="errors-container">
       <p><?php
-          $addView = new AddView();
+          $addView = new ProductView();
           $addView->showAddErros();
           ?></p>
     </div>

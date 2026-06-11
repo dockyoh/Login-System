@@ -1,0 +1,95 @@
+::before,
+::after,
+* {
+  margin: 0px;
+  padding: 0px;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+:root {
+  --spacing-s: 5px;
+  --spacing-m: 10px;
+  --spacing-l: 15px;
+  --spacing-xl: 20px;
+}
+
+body {
+  background-color: lightgray;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+}
+
+header {
+  padding: var(--spacing-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav ul {
+  list-style-type: none;
+}
+
+header nav li {
+  background-color: rgb(65, 65, 65);
+  padding: var(--spacing-s);
+  border-radius: var(--spacing-s);
+  border: none;
+}
+
+header nav a {
+  text-decoration: none;
+  color: white;
+}
+
+header form button {
+  background-color: black;
+  color: white;
+  border-radius: var(--spacing-s);
+  border: none;
+  padding: var(--spacing-s);
+  cursor: pointer;
+}
+
+header .logout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .logout-container p {
+  margin-right: var(--spacing-s);
+}
+
+.product-list {
+  max-width: 60%;
+  margin: auto;
+  list-style-type: none;
+}
+
+.product-list .product-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 100px), 1fr));
+}
+
+.product-list .product-card * {
+  align-self: center;
+}
+
+.product-list .product-item {
+  background-color: rgb(190, 190, 190);
+  margin-bottom: var(--spacing-m);
+  padding: var(--spacing-s);
+  border-radius: var(--spacing-s);
+}
+
+.product_column-title {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 100px), 1fr));
+  margin-bottom: var(--spacing-xl);
+}
+
+.product_column-title * {
+  font-weight: bold;
+}

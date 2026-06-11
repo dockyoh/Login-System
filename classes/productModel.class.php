@@ -1,6 +1,6 @@
 <?php
 
-class AddModel extends DbConnector
+class ProductModel extends DbConnector
 {
 
     public function insertProduct($productName, $price, $quantity)
@@ -17,6 +17,23 @@ class AddModel extends DbConnector
             $statement->execute();
         } catch (PDOException $e) {
             die('FAILED TO INSERT PRODUCT! ' . $e->getMessage());
+        }
+    }
+
+    public function getProduct()
+    {
+        try {
+            $query = "SELECT * FROM products";
+
+            $statement = $this->connect()->prepare($query);
+
+            $statement->execute();
+
+            $result = $statement->fetchAll();
+
+            return $result;
+        } catch (PDOException $e) {
+            die('FAILED TO GET PRODUCT ' . $e->getMessage());
         }
     }
 }

@@ -19,12 +19,12 @@ $loginView = new LoginView();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
-    <title>Login-Signup System</title>
+    <title>Login-Signup</title>
 </head>
 
 <body>
     <header>
-        <h1>Login-Signup System</h1>
+        <h1>Login-Signup</h1>
         <!-- SHOW LOGED USER -->
         <div class="logout-profile-container">
             <p><?php $signupView->showSignupUser();
