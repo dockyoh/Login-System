@@ -36,4 +36,19 @@ class ProductModel extends DbConnector
             die('FAILED TO GET PRODUCT ' . $e->getMessage());
         }
     }
+
+    public function deleteProduct($productId)
+    {
+        try {
+            $query = "DELETE FROM products WHERE product_id = :productId";
+
+            $statement = $this->connect()->prepare($query);
+
+            $statement->bindParam(':productId', $productId);
+
+            $statement->execute();
+        } catch (PDOException $e) {
+            die('FAILED TO DELETE PRODUCT! ' . $e->getMessage());
+        }
+    }
 }

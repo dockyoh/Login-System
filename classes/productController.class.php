@@ -3,6 +3,7 @@ require_once '../pure/sessionConfig.pure.php';
 
 class ProductController
 {
+    private $productId;
     private $productName;
     private $price;
     private $quantity;
@@ -13,6 +14,7 @@ class ProductController
 
     public function __construct($name, $price, $quantity)
     {
+        $this->productId = $name;
         $this->productName = $name;
         $this->price = $price;
         $this->quantity = $quantity;
@@ -93,5 +95,10 @@ class ProductController
         if (!$this->isErrors()) {
             $this->productModel->insertProduct($this->productName, $this->price, $this->quantity);
         }
+    }
+
+    public function deleteProduct()
+    {
+        $this->productModel->deleteProduct($this->productId);
     }
 }

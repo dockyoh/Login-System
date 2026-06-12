@@ -71,6 +71,7 @@ header .logout-container p {
 .product-list .product-card {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 100px), 1fr));
+  width: 100%;
 }
 
 .product-list .product-card * {
@@ -82,6 +83,9 @@ header .logout-container p {
   margin-bottom: var(--spacing-m);
   padding: var(--spacing-s);
   border-radius: var(--spacing-s);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .product_column-title {

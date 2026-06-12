@@ -60,7 +60,12 @@ $products = $productView->viewProducts();
               <p><?= htmlspecialchars($product['stock_quantity']); ?></p>
               <p><?= htmlspecialchars($product['is_active']); ?></p>
               <p><?= htmlspecialchars($product['created_at']); ?></p>
+              <!-- <p><?= htmlspecialchars($product['product_id']); ?></p> -->
             </article>
+            <form action="../pure/delete.pure.php" method="post">
+              <input type="hidden" name="productId" value="<?= htmlspecialchars($product['product_id']); ?>">
+              <button type="submit" name="deleteBtn">Delete</button>
+            </form>
           </li>
         <?php endforeach; ?>
       </ul>
