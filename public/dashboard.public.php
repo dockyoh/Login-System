@@ -60,11 +60,20 @@ $products = $productView->viewProducts();
               <p><?= htmlspecialchars($product['stock_quantity']); ?></p>
               <p><?= htmlspecialchars($product['is_active']); ?></p>
               <p><?= htmlspecialchars($product['created_at']); ?></p>
-              <!-- <p><?= htmlspecialchars($product['product_id']); ?></p> -->
             </article>
+            <!-- DLETE BUTTON -->
             <form action="../pure/delete.pure.php" method="post">
               <input type="hidden" name="productId" value="<?= htmlspecialchars($product['product_id']); ?>">
               <button type="submit" name="deleteBtn">Delete</button>
+            </form>
+            <!-- UPDATE BUTTON -->
+            <form action="updateProduct.public.php" method="get">
+              <input type="hidden" name="productId" value="<?= htmlspecialchars($product['product_id']); ?>">
+              <input type="hidden" name="productName" value="<?= htmlspecialchars($product['product_name']); ?>">
+              <input type="hidden" name="price" value="<?= htmlspecialchars($product['price']); ?>">
+              <input type="hidden" name="stockQuantity" value="<?= htmlspecialchars($product['stock_quantity']); ?>">
+              <input type="hidden" name="isActive" value="<?= htmlspecialchars($product['is_active']); ?>">
+              <button type="submit" name="updateBtn">Update</button>
             </form>
           </li>
         <?php endforeach; ?>

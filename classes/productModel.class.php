@@ -51,4 +51,6 @@ class ProductModel extends DbConnector
             die('FAILED TO DELETE PRODUCT! ' . $e->getMessage());
         }
     }
+
+    public function updateProduct() {}
 }

@@ -2,12 +2,12 @@
 
 require_once 'classAutoLoader.pure.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteBtn'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateBtn'])) {
 
     $productId = filter_input(INPUT_POST, 'productId', FILTER_SANITIZE_NUMBER_INT);
 
     $productController = new ProductController($productId, null, null);
-    $productController->deleteProduct();
+    $productController->updateProduct();
     headerDie();
 } else {
     headerDie();

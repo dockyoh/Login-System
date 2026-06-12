@@ -101,4 +101,9 @@ class ProductController
     {
         $this->productModel->deleteProduct($this->productId);
     }
+
+    public function updateProduct()
+    {
+        $this->productModel->updateProduct($this->productId);
+    }
 }

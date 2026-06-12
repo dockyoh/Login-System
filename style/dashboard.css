@@ -20,6 +20,10 @@ body {
   font-size: 1.1rem;
 }
 
+button {
+  cursor: pointer;
+}
+
 header {
   padding: var(--spacing-xl);
   display: flex;
@@ -29,6 +33,10 @@ header {
 
 header nav ul {
   list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-m);
 }
 
 header nav li {
@@ -96,4 +104,10 @@ header .logout-container p {
 
 .product_column-title * {
   font-weight: bold;
+}
+
+.product-item form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

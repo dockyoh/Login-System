@@ -16,17 +16,16 @@ require_once '../pure/classAutoLoader.pure.php';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../style/addProduct.css" />
-  <title>Add Product</title>
+  <title>Update Product</title>
 </head>
 
 <body>
   <header>
-    <h1>Add Product</h1>
+    <h1>Update Product</h1>
     <nav class="nav-container">
       <ul>
         <li><a href="./dashboard.public.php">Dashboard</a></li>
-        <!-- <li><a href="">Update Product</a></li>
-        <li><a href="">Delete Product</a></li> -->
+        <li><a href="./addProduct.public.php">Add Product</a></li>
       </ul>
     </nav>
     <div class="logout-container">
@@ -42,14 +41,14 @@ require_once '../pure/classAutoLoader.pure.php';
     </div>
   </header>
   <main>
-    <form action="../pure/add.pure.php" method="post">
+    <form action="" method="post">
       <div class="input-wrap">
         <label for="input-name">Name</label>
         <input
           type="text"
           name="productName"
           id="input-name"
-          placeholder="Product Name" />
+          placeholder="<?= htmlspecialchars($_GET['productName']); ?>" />
       </div>
 
       <div class="input-wrap">
@@ -59,7 +58,7 @@ require_once '../pure/classAutoLoader.pure.php';
           step="any"
           name="productPrice"
           id="input-price"
-          placeholder="0.00" />
+          placeholder="<?= htmlspecialchars($_GET['price']); ?>" />
       </div>
 
       <div class="input-wrap">
@@ -68,15 +67,24 @@ require_once '../pure/classAutoLoader.pure.php';
           type="number"
           name="stockQuantity"
           id="input-quantity"
-          placeholder="0" />
+          placeholder="<?= htmlspecialchars($_GET['stockQuantity']); ?>" />
       </div>
 
-      <button type="submit" class="add-button">ADD</button>
+      <div class="active-wrap">
+        <label for="is-active">Is Active?</label>
+        <select name="isActive" id="is-active">
+          <option value="TRUE">Yes</option>
+          <option value="FALSE">No</option>
+        </select>
+      </div>
+
+      <button type="submit" class="add-button">Save</button>
     </form>
     <div class="errors-container">
       <p><?php
           $addView = new ProductView();
           $addView->showAddErros();
+          echo $_GET['productId'];
           ?></p>
     </div>
   </main>

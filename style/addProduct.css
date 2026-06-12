@@ -120,3 +120,14 @@ form .add-button {
   cursor: pointer;
   margin-top: var(--spacing-l);
 }
+
+form .active-wrap {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+form .active-wrap select {
+  font-size: 1.25rem;
+  margin-left: var(--spacing-s);
+}
