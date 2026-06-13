@@ -2,19 +2,24 @@
 
 require_once 'classAutoLoader.pure.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateBtn'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateButton'])) {
 
-    $productId = filter_input(INPUT_POST, 'productId', FILTER_SANITIZE_NUMBER_INT);
+    $productId = (int)filter_input(INPUT_POST, 'productId', FILTER_SANITIZE_NUMBER_INT);
+    $name = $_POST['productName'];
+    $price = (float)$_POST['productPrice'];
+    $quantity = (int)filter_input(INPUT_POST, 'stockQuantity', FILTER_SANITIZE_NUMBER_INT);
+    $isActive = filter_var($_POST['isActive'], FILTER_VALIDATE_BOOL); //CONVERT STRING FALSE TO BOOLEAN FALSE
 
-    $productController = new ProductController($productId, null, null);
+    $productController = new ProductController($productId, $name, $price, $quantity, $isActive);
     $productController->updateProduct();
-    headerDie();
+
+    headerDie('Location: ../public/dashboard.public.php');
 } else {
-    headerDie();
+    headerDie('Location: ../public/updateProduct.public.php');
 }
 
-function headerDie()
+function headerDie($location)
 {
-    header('Location: ../public/dashboard.public.php');
+    header($location);
     die();
 }

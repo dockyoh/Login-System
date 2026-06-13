@@ -41,14 +41,16 @@ require_once '../pure/classAutoLoader.pure.php';
     </div>
   </header>
   <main>
-    <form action="" method="post">
+    <form action="../pure/update.pure.php" method="post">
+      <input type="hidden" name="productId" value="<?= htmlspecialchars($_GET['productId']) ?>>">
       <div class="input-wrap">
         <label for="input-name">Name</label>
         <input
           type="text"
           name="productName"
           id="input-name"
-          placeholder="<?= htmlspecialchars($_GET['productName']); ?>" />
+
+          value="<?= htmlspecialchars($_GET['productName']); ?>" />
       </div>
 
       <div class="input-wrap">
@@ -58,7 +60,7 @@ require_once '../pure/classAutoLoader.pure.php';
           step="any"
           name="productPrice"
           id="input-price"
-          placeholder="<?= htmlspecialchars($_GET['price']); ?>" />
+          value="<?= htmlspecialchars($_GET['price']); ?>" />
       </div>
 
       <div class="input-wrap">
@@ -67,24 +69,28 @@ require_once '../pure/classAutoLoader.pure.php';
           type="number"
           name="stockQuantity"
           id="input-quantity"
-          placeholder="<?= htmlspecialchars($_GET['stockQuantity']); ?>" />
+          value="<?= htmlspecialchars($_GET['stockQuantity']); ?>" />
       </div>
 
       <div class="active-wrap">
         <label for="is-active">Is Active?</label>
         <select name="isActive" id="is-active">
-          <option value="TRUE">Yes</option>
-          <option value="FALSE">No</option>
+          <?php if ($_GET['isActive'] === '1'): ?>
+            <option value="<?= htmlspecialchars($_GET['isActive']); ?>">Yes</option>
+            <option value="FALSE">No</option>
+          <?php else: ?>
+            <option value="<?= htmlspecialchars($_GET['isActive']); ?>">No</option>
+            <option value="TRUE">Yes</option>
+          <?php endif; ?>
         </select>
       </div>
 
-      <button type="submit" class="add-button">Save</button>
+      <button type="submit" class="update-button" name="updateButton">Save</button>
     </form>
     <div class="errors-container">
       <p><?php
           $addView = new ProductView();
           $addView->showAddErros();
-          echo $_GET['productId'];
           ?></p>
     </div>
   </main>

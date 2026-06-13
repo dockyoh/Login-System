@@ -7,21 +7,24 @@ class ProductController
     private $productName;
     private $price;
     private $quantity;
+    private $isActive;
 
     private $productModel;
 
     private $errors = [];
 
-    public function __construct($name, $price, $quantity)
+    public function __construct($id, $name, $price, $quantity, $isActive)
     {
-        $this->productId = $name;
+        $this->productId = $id;
         $this->productName = $name;
         $this->price = $price;
         $this->quantity = $quantity;
+        $this->isActive = $isActive;
 
         $this->productModel = new ProductModel();
     }
 
+    // FOR ADD CONTROLLER
     private function isEmpty()
     {
         if (empty($this->productName) || empty($this->price) || empty($this->quantity)) {
@@ -102,8 +105,28 @@ class ProductController
         $this->productModel->deleteProduct($this->productId);
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FOR UPDATE CONTROLLER
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // private function isUpdateEmpty()
+    // {
+    //     if (empty($this->productId) || empty($this->productName) || empty($this->price) || empty($this->quantity) || empty($this->isActive)) {
+    //         $this->errors['empty'] = 'PLEASE FILL ALL THE INPUTS!';
+    //         $this->errorHandler();
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
     public function updateProduct()
     {
-        $this->productModel->updateProduct($this->productId);
+        $this->productModel->updateProduct($this->productId, $this->productName, $this->price, $this->quantity, $this->isActive);
+        // echo $this->productId . '</br>';
+        // echo $this->productName . '</br>';
+        // echo $this->price . '</br>';
+        // echo $this->quantity . '</br>';
+        // echo $this->isActive . '</br>';
     }
 }

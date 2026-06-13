@@ -5,9 +5,9 @@ require_once 'classAutoLoader.pure.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productName = $_POST['productName'];
     $price = $_POST['productPrice'];
-    $quantity = $_POST['stockQuantity'];
+    $quantity = filter_input(INPUT_POST, 'stockQuantity', FILTER_SANITIZE_NUMBER_INT);
 
-    $productController = new ProductController($productName, $price, $quantity);
+    $productController = new ProductController(null, $productName, $price, $quantity, null);
 
     if ($productController->isErrors()) {
         headerDie();

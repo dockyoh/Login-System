@@ -52,5 +52,22 @@ class ProductModel extends DbConnector
         }
     }
 
-    public function updateProduct() {}
+    public function updateProduct($id, $name, $price, $quantity, $isActive)
+    {
+        try {
+            $query = "UPDATE products SET product_name = :product_name, price = :price, stock_quantity = :quantity, is_active = :is_active WHERE product_id = :product_id;";
+
+            $statement = $this->connect()->prepare($query);
+
+            $statement->bindParam(':product_id', $id);
+            $statement->bindParam(':product_name', $name);
+            $statement->bindParam(':price', $price);
+            $statement->bindParam(':quantity', $quantity);
+            $statement->bindParam(':is_active', $isActive);
+
+            $statement->execute();
+        } catch (PDOException $e) {
+            die('FAILED TO UPDATE PRODUCT! ' . $e->getMessage());
+        }
+    }
 }
