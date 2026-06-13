@@ -109,24 +109,29 @@ class ProductController
     // FOR UPDATE CONTROLLER
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // private function isUpdateEmpty()
-    // {
-    //     if (empty($this->productId) || empty($this->productName) || empty($this->price) || empty($this->quantity) || empty($this->isActive)) {
-    //         $this->errors['empty'] = 'PLEASE FILL ALL THE INPUTS!';
-    //         $this->errorHandler();
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
+    private function isUpdateEmpty()
+    {
+        if (empty($this->productName)) {
+            $this->errors['empty'] = 'PLEASE UPDATE THE PRODUCT NAME!';
+            $this->errorHandler();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isUpdateErrors()
+    {
+        $empty = $this->isUpdateEmpty();
+        if ($empty) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function updateProduct()
     {
         $this->productModel->updateProduct($this->productId, $this->productName, $this->price, $this->quantity, $this->isActive);
-        // echo $this->productId . '</br>';
-        // echo $this->productName . '</br>';
-        // echo $this->price . '</br>';
-        // echo $this->quantity . '</br>';
-        // echo $this->isActive . '</br>';
     }
 }

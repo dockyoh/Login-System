@@ -13,7 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateButton'])) {
     $productController = new ProductController($productId, $name, $price, $quantity, $isActive);
     $productController->updateProduct();
 
-    headerDie('Location: ../public/dashboard.public.php');
+    if ($productController->isUpdateErrors()) {
+        headerDie("Location: ../public/updateProduct.public.php?productId=$productId&productName=$name&price=$price&stockQuantity=$quantity&isActive=$isActive");
+    } else {
+        headerDie('Location: ../public/dashboard.public.php');
+    }
 } else {
     headerDie('Location: ../public/updateProduct.public.php');
 }

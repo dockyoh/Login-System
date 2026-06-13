@@ -42,7 +42,7 @@ require_once '../pure/classAutoLoader.pure.php';
   </header>
   <main>
     <form action="../pure/update.pure.php" method="post">
-      <input type="hidden" name="productId" value="<?= htmlspecialchars($_GET['productId']) ?>>">
+      <input type="hidden" name="productId" value="<?= htmlspecialchars($_GET['productId']) ?>">
       <div class="input-wrap">
         <label for="input-name">Name</label>
         <input
