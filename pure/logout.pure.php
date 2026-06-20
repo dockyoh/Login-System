@@ -11,6 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 function headerDie()
 {
-    header('Location: ../index.php');
+    header('Location: ../index.html');
     die();
 }

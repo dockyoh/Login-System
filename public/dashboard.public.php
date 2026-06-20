@@ -4,7 +4,7 @@ session_start();
 require_once '../pure/classAutoLoader.pure.php';
 
 if (!isset($_SESSION['isLogedin'])) {
-  header('Location: ../index.php');
+  header('Location: ../index.html');
   die();
 }
 

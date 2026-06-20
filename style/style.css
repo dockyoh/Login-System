@@ -91,3 +91,15 @@ header .logout-profile-container {
 header button {
   margin: 0px;
 }
+
+.error-message-container {
+  margin-top: var(--spacing-m);
+}
+
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: green;
+}

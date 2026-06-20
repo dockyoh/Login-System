@@ -30,7 +30,7 @@ class SignupController
     private function isEmpty()
     {
         if (empty($this->username) || empty($this->password) || empty($this->confirmPassword) || empty($this->email)) {
-            $this->errors['empty'] = 'FILL ALL THE INPUT SHITS!';
+            $this->errors['empty'] = 'FILL ALL THE INPUT FIELDS!';
             $this->handleErrors();
             return true;
         } else {

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errorList = $signupController->getErrors();
 
         echo json_encode([
-            'status' => 'failed',
+            'failed' => true,
             'error' => [
                 'empty' => $errorList['empty'] ?? false,
                 'passwordMatch' => $errorList['passwordMatch'] ?? false,
@@ -34,9 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     echo json_encode([
-        'status' => 'success',
+        'success' => true,
         'message' => 'signup successfully, welcome ' . $username,
-        'user' => $username ?? false
+        'user' => $username ?? true
     ]);
 
     $signupController->addNewUser();
