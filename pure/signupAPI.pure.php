@@ -2,29 +2,47 @@
 
 header('Content-Type: application/json');
 
-$rawData = file_get_contents('php://input');
-$input = json_decode($rawData, true);
+require_once 'classAutoLoader.pure.php';
 
-if (!$input) {
-    http_response_code(400);
-    echo json_encode(['message' => 'no data recieved']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $rawData = file_get_contents('php://input');
+    $input = json_decode($rawData, true);
+
+    $username = $input['username'] ?? '';
+    $password = $input['password'] ?? '';
+    $repeatPassword = $input['repeatPassword'] ?? '';
+    $email = $input['email'] ?? '';
+
+    $secureUsername = htmlspecialchars($username);
+    $cleanEmail = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+    $signupController = new SignupController($secureUsername, $password, $repeatPassword, $cleanEmail);
+
+    if ($signupController->isErrors()) {
+        $errorList = $signupController->getErrors();
+
+        echo json_encode([
+            'status' => 'failed',
+            'error' => [
+                'empty' => $errorList['empty'] ?? false,
+                'passwordMatch' => $errorList['passwordMatch'] ?? false,
+                'userTaken' => $errorList['userTaken'] ?? false,
+                'emailTaken' => $errorList['emailTaken'] ?? false
+            ]
+        ]);
+        exit();
+    }
+
+    echo json_encode([
+        'status' => 'success',
+        'message' => 'signup successfully, welcome ' . $username,
+        'user' => $username ?? false
+    ]);
+
+    $signupController->addNewUser();
+
+    exit();
+} else {
+    header('Location: ../index.html');
     exit();
 }
-
-$username = $input['username'];
-$password = $input['pwd'];
-$confirmPass = $input['conPass'];
-$email = $input['email'];
-
-echo json_encode([
-    'status' => 'success',
-    'message' => 'user signup successfully!',
-    'user' => [
-        'username' => $username,
-        'password' => $password,
-        'confirmPass' => $confirmPass,
-        'email' => $email
-    ]
-]);
-
-exit();

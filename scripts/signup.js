@@ -1,15 +1,15 @@
-export function signup(username, password, confirmPassword, email) {
+export function signup(username, password, repeatPassword, email) {
   const userDetails = {
     username: username,
-    pwd: password,
-    conPass: confirmPassword,
+    password: password,
+    repeatPassword: repeatPassword,
     email: email,
   };
 
-  regUser(userDetails);
+  signupAPI(userDetails);
 }
 
-async function regUser(userDetails) {
+async function signupAPI(userDetails) {
   try {
     const response = await fetch("pure/signupAPI.pure.php", {
       method: "POST",
@@ -19,16 +19,18 @@ async function regUser(userDetails) {
 
     const data = await response.json();
 
+    if (response.ok && data.status === "failed") {
+      // console.log(data.message);
+      console.log(data.error.empty);
+      console.log(data.error.passwordMatch);
+      console.log(data.error.userTaken);
+      console.log(data.error.emailTaken);
+    }
+
     if (response.ok && data.status === "success") {
-      console.log(data.user.username);
-      console.log(data.user.password);
-      console.log(data.user.confirmPass);
-      console.log(data.user.email);
-    } else {
-      alert("Error" + data.message);
+      console.log(data.message);
     }
   } catch (error) {
-    console.log("connection failed ", error);
-    alert("Could not reach the backend server");
+    alert(`failed to connect server ${error}`);
   }
 }
