@@ -22,7 +22,7 @@ class LoginController
     private function isInputEmpty()
     {
         if (empty($this->email) || empty($this->password)) {
-            $this->errors['emptyInput'] = 'PLEASE FILL ALL THE INPUT FIELDS!';
+            $this->errors['emptyInput'] = 'FILL ALL THE INPUT FIELDS!';
             $this->handleErrors();
             return true;
         } else {
@@ -35,7 +35,7 @@ class LoginController
         if ($this->loginModel->logEmail($this->email)) {
             return true;
         } else {
-            $this->errors['invalidEmail'] = 'PLEASE PROVIDE A VALID EMAIL!';
+            $this->errors['invalidEmail'] = 'INVALID EMAIL!';
             $this->handleErrors();
             return false;
         }
@@ -46,7 +46,7 @@ class LoginController
         if ($this->loginModel->logPassword($this->email, $this->password)) {
             return true;
         } else {
-            $this->errors['invalidPassword'] = 'PLEASE PROVIDE A VALID PASSWORD!';
+            $this->errors['invalidPassword'] = 'INVALID PASSWORD!';
             $this->handleErrors();
             return false;
         }
@@ -71,6 +71,16 @@ class LoginController
             $_SESSION['logedUser'] = $this->loginModel->getUsername($this->email);
             $_SESSION['isLogedin'] = true;
         }
+    }
+
+    public function getErrors()
+    {
+        return $_SESSION['loginErrors'];
+    }
+
+    public function getLogUser()
+    {
+        return $_SESSION['logedUser'];
     }
 
     public function logValidUser()

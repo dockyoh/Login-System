@@ -45,7 +45,7 @@ function displaySignupResults(resultsData) {
   container.innerHTML = "";
 
   if (resultsData.success) {
-    const textContent = `Welcom ${resultsData.user} please login`;
+    const textContent = `Welcom ${resultsData.username} please login`;
     createAppendElement(container, textContent, true);
   } else {
     resultsData.map((error) => {
