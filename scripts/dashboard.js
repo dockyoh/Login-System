@@ -22,11 +22,11 @@ function renderProducts(products) {
   products.forEach((product) => {
     const clone = template.content.cloneNode(true);
 
-    clone.querySelector(".prod-name").textContent = product.name;
+    clone.querySelector(".prod-name").textContent = product.product_name;
     clone.querySelector(".prod-price").textContent = product.price;
-    clone.querySelector(".prod-quantity").textContent = product.quantity;
-    clone.querySelector(".prod-is-active").textContent = product.isActive;
-    clone.querySelector(".prod-created-at").textContent = product.createdAt;
+    clone.querySelector(".prod-quantity").textContent = product.stock_quantity;
+    clone.querySelector(".prod-is-active").textContent = product.is_active;
+    clone.querySelector(".prod-created-at").textContent = product.created_at;
 
     fragment.appendChild(clone);
   });

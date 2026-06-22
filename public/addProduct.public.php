@@ -24,7 +24,7 @@ require_once '../pure/classAutoLoader.pure.php';
     <h1>Add Product</h1>
     <nav class="nav-container">
       <ul>
-        <li><a href="./dashboard.public.php">Dashboard</a></li>
+        <li><a href="./dashboard.public.html">Dashboard</a></li>
         <!-- <li><a href="">Update Product</a></li>
         <li><a href="">Delete Product</a></li> -->
       </ul>
