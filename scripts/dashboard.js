@@ -1,3 +1,8 @@
+import { deleteProduct } from "./products.js";
+
+dashboard();
+
+// FETCH PRODUCTS FROM DATABASE
 async function dashboard() {
   try {
     const response = await fetch("../pure/productsAPI.pure.php");
@@ -14,8 +19,9 @@ async function dashboard() {
   }
 }
 
+// RENDER PRODUCTS LIST
 function renderProducts(products) {
-  const list = document.querySelector(".product-list");
+  const container = document.querySelector(".product-list");
   const template = document.querySelector(".product-list-template");
   const fragment = document.createDocumentFragment();
 
@@ -28,9 +34,21 @@ function renderProducts(products) {
     clone.querySelector(".prod-is-active").textContent = product.is_active;
     clone.querySelector(".prod-created-at").textContent = product.created_at;
 
+    clone.querySelector(".delete-button").dataset.prodId = product.product_id;
+    clone.querySelector(".update-button").dataset.prodId = product.product_id;
+
     fragment.appendChild(clone);
   });
-  list.appendChild(fragment);
+  container.appendChild(fragment);
 }
 
-dashboard();
+// DELETE PRODUCT
+document.querySelector(".product-list").addEventListener("click", (event) => {
+  if (event.target.classList.contains("delete-button")) {
+    const id = event.target.closest(".delete-button").dataset.prodId;
+    console.log(`dashboard.js ID: ${id}`);
+
+    deleteProduct(id);
+    event.target.closest(".product-item").remove();
+  }
+});

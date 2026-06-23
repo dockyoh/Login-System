@@ -33,7 +33,7 @@ async function fetchLoginData(userDetails) {
     }
 
     if (response.ok && data.success) {
-      window.location = "public/dashboard.public.php";
+      window.location.href = "public/dashboard.public.html";
       console.log(data.user);
     }
   } catch (error) {

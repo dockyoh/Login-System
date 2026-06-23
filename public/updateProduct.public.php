@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['isLogedin'])) {
-  header('Location: ../index.php');
+  header('Location: ../index.html');
   die();
 }
 

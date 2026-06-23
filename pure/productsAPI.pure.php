@@ -4,14 +4,40 @@ header('Content-Type: application/json');
 
 require_once 'classAutoLoader.pure.php';
 
-$productView = new ProductView();
-$products = $productView->viewProducts();
+viewProducts();
+deleteProduct();
 
-// $products = [
-//     ['id' => 1, 'name' => 'nails', 'price' => '15.00', 'quantity' => '50', 'isActive' => '1', 'createdAt' => '2026-06-12 11:30:15'],
-//     ['id' => 2, 'name' => 'cement', 'price' => '15.00', 'quantity' => '50', 'isActive' => '1', 'createdAt' => '2026-06-12 11:30:15'],
-//     ['id' => 3, 'name' => 'hammer', 'price' => '15.00', 'quantity' => '50', 'isActive' => '1', 'createdAt' => '2026-06-12 11:30:15']
-// ];
+function viewProducts()
+{
+    $productView = new ProductView();
+    $products = $productView->viewProducts();
 
-echo json_encode($products);
-exit();
+    // $products = [
+    //     ['id' => 1, 'name' => 'nails', 'price' => '15.00', 'quantity' => '50', 'isActive' => '1', 'createdAt' => '2026-06-12 11:30:15'],
+    //     ['id' => 2, 'name' => 'cement', 'price' => '15.00', 'quantity' => '50', 'isActive' => '1', 'createdAt' => '2026-06-12 11:30:15'],
+    //     ['id' => 3, 'name' => 'hammer', 'price' => '15.00', 'quantity' => '50', 'isActive' => '1', 'createdAt' => '2026-06-12 11:30:15']
+    // ];
+
+    echo json_encode($products);
+    exit();
+}
+
+
+function deleteProduct()
+{
+
+    $rawData = file_get_contents('php://input');
+    $input = json_decode($rawData, true);
+
+    $prodId = $input['prodId'] ?? '';
+
+    $productController = new ProductController($prodId, null, null, null, null);
+    $productController->deleteProduct();
+
+    // viewProducts();
+
+    echo json_encode([
+        'id' =>  $prodId
+    ]);
+    exit();
+}
