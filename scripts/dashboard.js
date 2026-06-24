@@ -1,6 +1,9 @@
-import { deleteProduct } from "./products.js";
+import { deleteProduct } from "./delete.js";
+// import { updateForm } from "./update.js";
 
 dashboard();
+
+let productList;
 
 // FETCH PRODUCTS FROM DATABASE
 async function dashboard() {
@@ -11,9 +14,11 @@ async function dashboard() {
       throw new Error(`http error status: ${response.status}`);
     }
 
-    const products = await response.json();
+    const data = await response.json();
 
-    renderProducts(products);
+    renderProducts(data);
+
+    productList = data;
   } catch (error) {
     console.error("failed to fetch server ", error);
   }
@@ -46,9 +51,28 @@ function renderProducts(products) {
 document.querySelector(".product-list").addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-button")) {
     const id = event.target.closest(".delete-button").dataset.prodId;
-    console.log(`dashboard.js ID: ${id}`);
 
     deleteProduct(id);
     event.target.closest(".product-item").remove();
+  }
+});
+
+// UPDATE PRODUCT
+document.querySelector(".product-list").addEventListener("click", (event) => {
+  if (event.target.classList.contains("update-button")) {
+    const id = event.target.closest(".update-button").dataset.prodId;
+
+    const productToUpdate = productList.filter(
+      (item) => item.product_id === Number(id),
+    );
+
+    localStorage.clear();
+    localStorage.setItem("productToUpdate", JSON.stringify(productToUpdate));
+
+    // console.log(productToUpdate);
+
+    // updateForm(productToUpdate);
+
+    window.location.href = "../public/updateProduct.public.html";
   }
 });

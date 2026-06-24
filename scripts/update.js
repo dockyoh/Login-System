@@ -1,12 +1,18 @@
-export async function deleteProduct(id) {
+updateForm();
+
+function updateForm() {
+  const productToUpdate = JSON.parse(localStorage.getItem("productToUpdate"));
+  console.log(productToUpdate);
+}
+
+export async function updateProductAPI(id) {
   try {
-    const prodDetails = {
+    prodDetails = {
       prodId: id,
+      update: true,
     };
 
-    console.log(`product.js id: ${prodDetails.prodId}`);
-
-    const response = await fetch("../pure/deleteAPI.pure.php", {
+    const response = await fetch("../pure/deleteUpdateAPI.pure.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(prodDetails),
@@ -17,8 +23,6 @@ export async function deleteProduct(id) {
     }
 
     const data = await response.json();
-
-    console.log(data);
   } catch (error) {
     console.log(`Failed to fetch server: ${error}`);
   }
