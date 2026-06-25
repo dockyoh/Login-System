@@ -69,10 +69,6 @@ document.querySelector(".product-list").addEventListener("click", (event) => {
     localStorage.clear();
     localStorage.setItem("productToUpdate", JSON.stringify(productToUpdate));
 
-    // console.log(productToUpdate);
-
-    // updateForm(productToUpdate);
-
     window.location.href = "../public/updateProduct.public.html";
   }
 });

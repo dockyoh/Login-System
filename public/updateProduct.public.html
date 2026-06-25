@@ -17,56 +17,56 @@
         </ul>
       </nav>
       <div class="logout-container">
-        <p></p>
-        <form action="../pure/logout.pure.php" method="post">
-          <button type="submit">Logout</button>
-        </form>
+        <p class="loged-user">drugUser</p>
+        <button class="logout-button">Logout</button>
       </div>
     </header>
-    <main>
-      <form action="../pure/update.pure.php" method="post">
-        <input type="hidden" name="productId" value="" />
-        <div class="input-wrap">
-          <label for="input-name">Name</label>
-          <input type="text" name="productName" id="input-name" value="" />
-        </div>
+    <!-- TEMPLATE CONTAINER -->
+    <main class="template-container">
+      <!-- FORM TEMPLATE -->
+      <template class="update-template">
+        <form action="" method="post">
+          <input type="hidden" name="productId" value="" />
+          <div class="input-wrap">
+            <label for="input-name">Name</label>
+            <input type="text" name="productName" id="input-name" value="" />
+          </div>
 
-        <div class="input-wrap">
-          <label for="input-price">Price</label>
-          <input
-            type="number"
-            step="any"
-            name="productPrice"
-            id="input-price"
-            value=""
-          />
-        </div>
+          <div class="input-wrap">
+            <label for="input-price">Price</label>
+            <input
+              type="number"
+              step="any"
+              name="productPrice"
+              id="input-price"
+              value=""
+            />
+          </div>
 
-        <div class="input-wrap">
-          <label for="input-quantity">Quantity</label>
-          <input
-            type="number"
-            name="stockQuantity"
-            id="input-quantity"
-            value=""
-          />
-        </div>
+          <div class="input-wrap">
+            <label for="input-quantity">Quantity</label>
+            <input
+              type="number"
+              name="stockQuantity"
+              id="input-quantity"
+              value=""
+            />
+          </div>
 
-        <div class="active-wrap">
-          <label for="is-active">Is Active?</label>
-          <select name="isActive" id="is-active">
-            <option value="">Yes</option>
-            <option value="FALSE">No</option>
+          <div class="active-wrap">
+            <label for="is-active">Is Active?</label>
+            <select name="isActive" id="is-active">
+              <option value=""></option>
 
-            <option value="">No</option>
-            <option value="TRUE">Yes</option>
-          </select>
-        </div>
+              <option value=""></option>
+            </select>
+          </div>
 
-        <button type="submit" class="update-button" name="updateButton">
-          Save
-        </button>
-      </form>
+          <button type="submit" class="update-button" name="updateButton">
+            Save
+          </button>
+        </form>
+      </template>
       <div class="errors-container">
         <p></p>
       </div>
