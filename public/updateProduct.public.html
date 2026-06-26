@@ -25,11 +25,11 @@
     <main class="template-container">
       <!-- FORM TEMPLATE -->
       <template class="update-template">
-        <form action="" method="post">
-          <input type="hidden" name="productId" value="" />
+        <form action="" method="post" class="update-form">
+          <input type="hidden" name="prodId" id="input-id" value="" />
           <div class="input-wrap">
             <label for="input-name">Name</label>
-            <input type="text" name="productName" id="input-name" value="" />
+            <input type="text" name="prodName" id="input-name" value="" />
           </div>
 
           <div class="input-wrap">
@@ -37,7 +37,7 @@
             <input
               type="number"
               step="any"
-              name="productPrice"
+              name="prodPrice"
               id="input-price"
               value=""
             />
@@ -63,7 +63,7 @@
           </div>
 
           <button type="submit" class="update-button" name="updateButton">
-            Save
+            Update
           </button>
         </form>
       </template>

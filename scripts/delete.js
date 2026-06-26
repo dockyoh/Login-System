@@ -1,11 +1,12 @@
 export async function deleteProduct(id) {
   try {
-    prodDetails = {
+    const prodDetails = {
       prodId: id,
-      delete: true,
     };
 
-    const response = await fetch("../pure/deleteUpdateAPI.pure.php", {
+    console.log(prodDetails);
+
+    const response = await fetch("../pure/deleteAPI.pure.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(prodDetails),
@@ -14,8 +15,6 @@ export async function deleteProduct(id) {
     if (!response.ok) {
       throw new Error(`Response failed, status: ${response.status}`);
     }
-
-    const data = await response.json();
   } catch (error) {
     console.log(`Failed to fetch server: ${error}`);
   }

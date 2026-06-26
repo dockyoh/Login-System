@@ -1,5 +1,4 @@
 import { deleteProduct } from "./delete.js";
-// import { updateForm } from "./update.js";
 
 dashboard();
 

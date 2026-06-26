@@ -1,6 +1,6 @@
-updateForm();
-
-function updateForm() {
+renderUpdateForm();
+// RENDER DYNAMIC UPDATE FORM
+function renderUpdateForm() {
   const productToUpdate = JSON.parse(localStorage.getItem("productToUpdate"));
   const product = productToUpdate[0];
 
@@ -10,6 +10,7 @@ function updateForm() {
 
   const clone = template.content.cloneNode(true);
 
+  clone.querySelector("#input-id").value = product.product_id;
   clone.querySelector("#input-name").value = product.product_name;
   clone.querySelector("#input-price").value = product.price;
   clone.querySelector("#input-quantity").value = product.stock_quantity;
@@ -27,24 +28,39 @@ function updateForm() {
 
     clone.querySelector("#is-active").options[1].text = "Yes";
     clone.querySelector("#is-active").options[1].value = true;
-    console.log("no");
   }
 
   fragment.appendChild(clone);
 
   containerElement.appendChild(fragment);
 
-  console.log(product);
+  // console.log(product);
 }
 
-export async function updateProductAPI(productId) {
-  try {
-    prodDetails = {
-      prodId: productId,
-      update: true,
-    };
+// GET FORM DATA
+const updateForm = document.querySelector(".update-form");
 
-    const response = await fetch("../pure/deleteUpdateAPI.pure.php", {
+updateForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(updateForm);
+
+  const prodDetails = {
+    prodId: formData.get("prodId"),
+    prodName: formData.get("prodName"),
+    prodPrice: formData.get("prodPrice"),
+    stockQuantity: formData.get("stockQuantity"),
+    isActive: formData.get("isActive"),
+  };
+
+  console.log(prodDetails);
+
+  updateProductAPI(prodDetails);
+});
+
+export async function updateProductAPI(prodDetails) {
+  try {
+    const response = await fetch("../pure/updateAPI.pure.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(prodDetails),
@@ -55,6 +71,10 @@ export async function updateProductAPI(productId) {
     }
 
     const data = await response.json();
+
+    console.log(data);
+
+    window.location.href = "../public/dashboard.public.html";
   } catch (error) {
     console.log(`Failed to fetch server: ${error}`);
   }
