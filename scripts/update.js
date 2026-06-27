@@ -21,7 +21,6 @@ function renderUpdateForm() {
 
     clone.querySelector("#is-active").options[1].text = "No";
     clone.querySelector("#is-active").options[1].value = false;
-    console.log("yes");
   } else {
     clone.querySelector("#is-active").options[0].text = "No";
     clone.querySelector("#is-active").options[0].value = false;
@@ -33,8 +32,6 @@ function renderUpdateForm() {
   fragment.appendChild(clone);
 
   containerElement.appendChild(fragment);
-
-  // console.log(product);
 }
 
 // GET FORM DATA
@@ -53,11 +50,10 @@ updateForm.addEventListener("submit", (e) => {
     isActive: formData.get("isActive"),
   };
 
-  console.log(prodDetails);
-
   updateProductAPI(prodDetails);
 });
 
+// UPDATE API, FETCHING TO SERVER
 export async function updateProductAPI(prodDetails) {
   try {
     const response = await fetch("../pure/updateAPI.pure.php", {
@@ -72,10 +68,37 @@ export async function updateProductAPI(prodDetails) {
 
     const data = await response.json();
 
-    console.log(data);
+    if (!data.ok) {
+      const errors = [
+        data.errors.empty,
+        data.errors.positiveNum,
+        data.errors.numericQuantity,
+        data.errors.numericPrice,
+      ];
 
-    window.location.href = "../public/dashboard.public.html";
+      renderUpdateErrors(errors);
+    }
+    if (data.ok) {
+      window.location.href = "../public/dashboard.public.html";
+    }
   } catch (error) {
     console.log(`Failed to fetch server: ${error}`);
   }
+}
+
+// RENDER UPDATE ERRORS
+function renderUpdateErrors(errors) {
+  const container = document.querySelector(".error-container");
+
+  container.innerHTML = "";
+
+  errors.forEach((error) => {
+    const pElement = document.createElement("p");
+
+    pElement.classList.add(".error-notification");
+
+    pElement.textContent = error;
+
+    container.appendChild(pElement);
+  });
 }

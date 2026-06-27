@@ -73,8 +73,10 @@ class ProductController
     {
         if (!empty($this->errors)) {
             $_SESSION['addErrors'] = $this->errors;
+            $_SESSION['updateErrors'] = $this->errors;
         } else {
             $_SESSION['addErrors'] = ['ADDED' => 'PRODUCT ADDED SUCCESSFULLY!'];
+            $_SESSION['updateErrors'] = ['UPDATED' => 'PRODUCT UPDATED SUCCESSFULLY!'];
         }
     }
 

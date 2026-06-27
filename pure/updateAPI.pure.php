@@ -16,16 +16,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $productController = new ProductController($prodId,  $prodName,  $prodPrice,  $stockQuantity,  $isActive);
 
-    $productController->updateProduct();
+    if ($productController->isErrors()) {
 
-    echo json_encode([
-        'productUpdated' => [
-            'prodId' => $prodId,
-            'prodName' => $prodName,
-            'prodPrice' => $prodPrice,
-            'stockQuantity' => $stockQuantity,
-            'isActive' => $isActive
-        ]
-    ]);
-    exit();
+        echo json_encode([
+            'ok' => false,
+            'errors' => $_SESSION['updateErrors']
+        ]);
+
+        exit();
+    } else {
+        $productController->updateProduct();
+
+        echo json_encode([
+            'ok' => true,
+            'errors' => $_SESSION['updateErrors']
+        ]);
+
+        exit();
+    }
 }
