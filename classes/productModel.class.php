@@ -70,4 +70,30 @@ class ProductModel extends DbConnector
             die('FAILED TO UPDATE PRODUCT! ' . $e->getMessage());
         }
     }
+
+
+    // CHECK INTO DATABASE IF THE PRODUCT NAME IS ALREADY TAKEN
+    public function checkProdName($prodName)
+    {
+
+        try {
+            $query = "SELECT COUNT(*) FROM products WHERE product_name = :prodName";
+
+            $statement = $this->connect()->prepare($query);
+
+            $statement->bindParam(':prodName', $prodName);
+
+            $statement->execute();
+
+            $count = $statement->fetchColumn();
+
+            if ($count > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            die('FAILED TO CHECK PRODUCT NAME: ' . $e->getMessage());
+        }
+    }
 }

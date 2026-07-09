@@ -36,6 +36,19 @@ class ProductController
         }
     }
 
+    // CHECK IF THE PRODUCT NAME IS TAKEN
+    private function isProdTaken()
+    {
+        $isTaken = $this->productModel->checkProdName($this->productName);
+        if ($isTaken) {
+            $this->errors['prodIsTaken'] = 'PRODUCT NAME:' . $this->productName . ' IS ALREADY TAKEN';
+            $this->errorHandler();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private function isPriceNumeric()
     {
         if (is_numeric($this->price)) {
@@ -75,7 +88,7 @@ class ProductController
             $_SESSION['addErrors'] = $this->errors;
             $_SESSION['updateErrors'] = $this->errors;
         } else {
-            $_SESSION['addErrors'] = ['ADDED' => 'PRODUCT ADDED SUCCESSFULLY!'];
+            $_SESSION['addErrors'] = ['added' => 'PRODUCT ADDED SUCCESSFULLY!'];
             $_SESSION['updateErrors'] = ['UPDATED' => 'PRODUCT UPDATED SUCCESSFULLY!'];
         }
     }
@@ -86,8 +99,9 @@ class ProductController
         $priceNum = $this->isPriceNumeric();
         $quantityNum = $this->isQuantityNumeric();
         $positiveNum = $this->isPositiveNumber();
+        $isTaken = $this->isProdTaken();
 
-        if ($empty || !$priceNum || !$quantityNum || !$positiveNum) {
+        if ($empty || !$priceNum || !$quantityNum || !$positiveNum || $isTaken) {
             return true;
         } else {
             $this->errorHandler();
@@ -95,6 +109,7 @@ class ProductController
         }
     }
 
+    // ADD PRODUCT
     public function addProduct()
     {
         if (!$this->isErrors()) {
