@@ -1,4 +1,5 @@
 import { deleteProduct } from "./delete.js";
+import { logoutUser } from "./logout.js";
 
 dashboard();
 
@@ -70,4 +71,8 @@ document.querySelector(".product-list").addEventListener("click", (event) => {
 
     window.location.href = "../public/updateProduct.public.html";
   }
+});
+
+document.querySelector(".logout-button").addEventListener("click", (e) => {
+  logoutUser();
 });

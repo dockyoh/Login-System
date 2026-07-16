@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $productController = new ProductController($prodId,  $prodName,  $prodPrice,  $stockQuantity,  $isActive);
 
-    if ($productController->isErrors()) {
+    if ($productController->isUpdateErrors()) {
 
         echo json_encode([
             'ok' => false,

@@ -1,10 +1,12 @@
 import { signup } from "./signup.js";
 import { login } from "./login.js";
 import { addProdToAPI } from "./add.js";
+import { logoutUser } from "./logout.js";
 
 const signupForm = document.querySelector(".signup-form");
 const loginForm = document.querySelector(".login-form");
 const addForm = document.querySelector(".add-form");
+const logoutButton = document.querySelector(".logout-button");
 
 // SIGNUP FORM
 if (signupForm) {
@@ -52,5 +54,11 @@ if (addForm) {
     console.log(productDetails);
 
     addProdToAPI(productDetails);
+  });
+}
+
+if (logoutButton) {
+  logoutButton.addEventListener("click", (e) => {
+    logoutUser();
   });
 }

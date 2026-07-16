@@ -93,6 +93,7 @@ class ProductController
         }
     }
 
+    // CHECK INPUT FORM ERRORS
     public function isErrors()
     {
         $empty = $this->isEmpty();
@@ -100,8 +101,22 @@ class ProductController
         $quantityNum = $this->isQuantityNumeric();
         $positiveNum = $this->isPositiveNumber();
         $isTaken = $this->isProdTaken();
-
         if ($empty || !$priceNum || !$quantityNum || !$positiveNum || $isTaken) {
+            return true;
+        } else {
+            $this->errorHandler();
+            return false;
+        }
+    }
+
+    // CHECK UPDATE FORM ERRORS
+    public function isUpdateErrors()
+    {
+        $empty = $this->isEmpty();
+        $priceNum = $this->isPriceNumeric();
+        $quantityNum = $this->isQuantityNumeric();
+        $positiveNum = $this->isPositiveNumber();
+        if ($empty || !$priceNum || !$quantityNum || !$positiveNum) {
             return true;
         } else {
             $this->errorHandler();
@@ -126,26 +141,26 @@ class ProductController
     // FOR UPDATE CONTROLLER
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private function isUpdateEmpty()
-    {
-        if (empty($this->productName)) {
-            $this->errors['empty'] = 'PLEASE UPDATE THE PRODUCT NAME!';
-            $this->errorHandler();
-            return true;
-        } else {
-            return false;
-        }
-    }
+    // private function isUpdateEmpty()
+    // {
+    //     if (empty($this->productName)) {
+    //         $this->errors['empty'] = 'PLEASE UPDATE THE PRODUCT NAME!';
+    //         $this->errorHandler();
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
-    public function isUpdateErrors()
-    {
-        $empty = $this->isUpdateEmpty();
-        if ($empty) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    // public function isUpdateErrors()
+    // {
+    //     $empty = $this->isUpdateEmpty();
+    //     if ($empty) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
     public function updateProduct()
     {

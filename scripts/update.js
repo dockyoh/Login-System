@@ -1,3 +1,5 @@
+import { logoutUser } from "./logout.js";
+
 renderUpdateForm();
 // RENDER DYNAMIC UPDATE FORM
 function renderUpdateForm() {
@@ -102,3 +104,7 @@ function renderUpdateErrors(errors) {
     container.appendChild(pElement);
   });
 }
+
+document.querySelector(".logout-button").addEventListener("click", (e) => {
+  logoutUser();
+});

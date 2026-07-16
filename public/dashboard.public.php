@@ -3,7 +3,7 @@ session_start();
 
 require_once '../pure/classAutoLoader.pure.php';
 
-if (!isset($_SESSION['isLogedin'])) {
+if (!isset($_SESSION['isLogedin']) && !isset($_SESSION['logedUser'])) {
   header('Location: ../index.html');
   die();
 }
