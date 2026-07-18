@@ -1,5 +1,8 @@
 import { deleteProduct } from "./delete.js";
 import { logoutUser } from "./logout.js";
+import { sessionSecurity } from "./userSessions.js";
+
+sessionSecurity();
 
 dashboard();
 
@@ -66,7 +69,7 @@ document.querySelector(".product-list").addEventListener("click", (event) => {
       (item) => item.product_id === Number(id),
     );
 
-    localStorage.clear();
+    // localStorage.clear();
     localStorage.setItem("productToUpdate", JSON.stringify(productToUpdate));
 
     window.location.href = "../public/updateProduct.public.html";

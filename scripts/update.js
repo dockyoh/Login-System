@@ -1,4 +1,7 @@
 import { logoutUser } from "./logout.js";
+import { sessionSecurity } from "./userSessions.js";
+
+sessionSecurity();
 
 renderUpdateForm();
 // RENDER DYNAMIC UPDATE FORM
@@ -105,6 +108,7 @@ function renderUpdateErrors(errors) {
   });
 }
 
+// LOGOUT BUTTON
 document.querySelector(".logout-button").addEventListener("click", (e) => {
   logoutUser();
 });

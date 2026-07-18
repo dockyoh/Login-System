@@ -33,8 +33,8 @@ async function fetchLoginData(userDetails) {
     }
 
     if (response.ok && data.success) {
+      localStorage.setItem("isLogedin", JSON.stringify(true)); // <------------------- I THING THIS CODE IS NOT WORKING
       window.location.href = "public/dashboard.public.html";
-      console.log(data.user);
     }
   } catch (error) {
     alert("FAILED TO FETCH SERVER! ".error);

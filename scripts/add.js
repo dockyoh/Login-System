@@ -1,3 +1,31 @@
+import { logoutUser } from "./logout.js";
+import { sessionSecurity } from "./userSessions.js";
+
+sessionSecurity();
+
+const addForm = document.querySelector(".add-form");
+
+// ADD PRODUCT FORM
+addForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(addForm);
+
+  const productDetails = {
+    prodName: formData.get("productName"),
+    prodPrice: formData.get("productPrice"),
+    prodQuantity: formData.get("stockQuantity"),
+  };
+
+  console.log(productDetails);
+
+  addProdToAPI(productDetails);
+});
+
+document.querySelector(".logout-button").addEventListener("click", (e) => {
+  logoutUser();
+});
+
 export async function addProdToAPI(productDetails) {
   try {
     const response = await fetch("../pure/addAPI.pure.php", {

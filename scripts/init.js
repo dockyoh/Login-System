@@ -1,12 +1,17 @@
 import { signup } from "./signup.js";
 import { login } from "./login.js";
-import { addProdToAPI } from "./add.js";
-import { logoutUser } from "./logout.js";
+// import { sessionSecurity } from "./userSessions.js";
 
 const signupForm = document.querySelector(".signup-form");
 const loginForm = document.querySelector(".login-form");
-const addForm = document.querySelector(".add-form");
-const logoutButton = document.querySelector(".logout-button");
+const isLogedin = JSON.parse(localStorage.getItem("isLogedin"));
+
+if (isLogedin) {
+  console.log("hello login");
+  window.location.href = "./public/dashboard.public.html";
+}
+
+// sessionSecurity();
 
 // SIGNUP FORM
 if (signupForm) {
@@ -39,26 +44,26 @@ if (loginForm) {
 }
 
 // ADD PRODUCT FORM
-if (addForm) {
-  addForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+// if (addForm) {
+//   addForm.addEventListener("submit", (e) => {
+//     e.preventDefault();
 
-    const formData = new FormData(addForm);
+//     const formData = new FormData(addForm);
 
-    const productDetails = {
-      prodName: formData.get("productName"),
-      prodPrice: formData.get("productPrice"),
-      prodQuantity: formData.get("stockQuantity"),
-    };
+//     const productDetails = {
+//       prodName: formData.get("productName"),
+//       prodPrice: formData.get("productPrice"),
+//       prodQuantity: formData.get("stockQuantity"),
+//     };
 
-    console.log(productDetails);
+//     console.log(productDetails);
 
-    addProdToAPI(productDetails);
-  });
-}
+//     addProdToAPI(productDetails);
+//   });
+// }
 
-if (logoutButton) {
-  logoutButton.addEventListener("click", (e) => {
-    logoutUser();
-  });
-}
+// if (logoutButton) {
+//   logoutButton.addEventListener("click", (e) => {
+//     logoutUser();
+//   });
+// }
