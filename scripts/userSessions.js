@@ -22,4 +22,5 @@ export async function sessionSecurity() {
 
 function renderLogedUser(user) {
   console.log(user);
+  document.querySelector(".loged-user").textContent = user;
 }

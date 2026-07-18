@@ -51,15 +51,6 @@ header nav a {
   color: white;
 }
 
-header form button {
-  background-color: black;
-  color: white;
-  border-radius: var(--spacing-s);
-  border: none;
-  padding: var(--spacing-s);
-  cursor: pointer;
-}
-
 header .logout-container {
   display: flex;
   justify-content: center;

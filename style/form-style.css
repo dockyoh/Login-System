@@ -52,13 +52,8 @@ header .logout-container {
   align-items: center;
 }
 
-header button {
-  padding: var(--spacing-s);
-  border-radius: var(--spacing-s);
-  border: none;
-  background-color: black;
-  cursor: pointer;
-  color: white;
+header .logout-container p {
+  margin-right: var(--spacing-s);
 }
 
 main {
